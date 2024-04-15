@@ -1,10 +1,11 @@
-import './App.css';
-import Header from './components/Header/Header';
+import HeaderComponents from './components/Header/Header';
+import BunnerComponents from './components/Bunner/Bunner';
 
 function App() {
   return (
     <>
-      <Header />
+      <BunnerComponents />
+      <HeaderComponents />
     </>
   );
 }
