@@ -1,23 +1,29 @@
 import useInput from '../hooks/useInput';
 import styled from 'styled-components';
-import { HeaderPic } from './Header';
+import FilterIcon from '../../assets/filter-icon.svg?react';
+import SearchIcon from '../../assets/search-icon.svg?react';
 
 const Div = styled.div`
+  height: 55px;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  max-width: 332px;
+  box-shadow: 0px 0px 10px 7px #2222221a;
+  border-radius: 30px;
+  padding: 5px 15px;
+  &:hover {
+    background-color: #e5e5e5;
+  }
 `;
 
 const Input = styled.input`
   width: 332px;
-  height: 55px;
-  padding: 5px 10px 5px 50px;
-  border-radius: 30px;
-  border: 1px solid var(--gray-color);
-  color: #bbbbbb;
+  padding: 5px 10px;
   font-size: 14px;
-  box-shadow: 0px 0px 10px 7px #2222221a;
+  border: none;
+  background: none;
+  outline: none;
 `;
 
 export default function HeaderInput() {
@@ -25,21 +31,9 @@ export default function HeaderInput() {
 
   return (
     <Div>
-      <HeaderPic
-        src="./filter-icon.svg"
-        width="24px"
-        height="24px"
-        position="absolute"
-        left="17px"
-      />
-      <Input type="text" {...input} value={'Staycation to Bali'} />
-      <HeaderPic
-        src="./search-icon.svg"
-        width="30px"
-        height="30px"
-        position="absolute"
-        right="17px"
-      />
+      <FilterIcon width="24px" height="24px" />
+      <Input type="text" {...input} placeholder={'Staycation to Bali'} />
+      <SearchIcon width="30px" height="30px" />
     </Div>
   );
 }

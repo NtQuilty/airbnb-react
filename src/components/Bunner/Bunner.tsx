@@ -10,8 +10,6 @@ const Bunner = styled.div`
   height: 70px;
   padding: 10px 0px 0px 0px;
   gap: 10px;
-  width: calc(100% + 90px);
-  transform: translateX(-45px);
 `;
 
 const BunnerText = styled.div`
@@ -35,7 +33,7 @@ export default function BunnerComponents() {
         <Bunner>
           <div></div>
           <BunnerText> Hey, Where are you going?</BunnerText>
-          <BunnerIconButton src="/close-icon.svg" alt="Close Icon" onClick={deleteBunner} />
+          <BunnerIconButton onClick={deleteBunner} />
         </Bunner>
       )}
     </>

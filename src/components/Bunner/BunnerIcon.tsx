@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BunnerIcon from '../../assets/close-icon.svg?react';
 
 const Button = styled.button`
   display: grid;
@@ -10,15 +11,13 @@ const Button = styled.button`
 `;
 
 interface BunnerIconProps {
-  src: string;
-  alt: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export default function BunnerIconButton({ src, alt, onClick }: BunnerIconProps) {
+export default function BunnerIconButton({ onClick }: BunnerIconProps) {
   return (
     <Button type="button" onClick={onClick}>
-      <img src={src} alt={alt} />
+      <BunnerIcon />
     </Button>
   );
 }

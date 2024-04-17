@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { HeaderPic } from './Header';
+import EllipsisIcon from '../../assets/ellipsis-icon.svg?react';
+import UserIcon from '../../assets/user-icon.svg?react';
 
-export const Button = styled.button`
+const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,8 +19,8 @@ export default function HeaderButton() {
   return (
     <>
       <Button>
-        <HeaderPic src="./ellipsis-icon.svg" alt="Ellipsis icon" />
-        <HeaderPic src="./user-icon.svg" alt="User icon" />
+        <EllipsisIcon />
+        <UserIcon />
       </Button>
     </>
   );
