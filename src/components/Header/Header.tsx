@@ -3,6 +3,7 @@ import HeaderInput from './HeaderInput';
 import styled from 'styled-components';
 import LogoIcon from '../../assets/logo-icon.svg?react';
 import GlobeIcon from '../../assets/globe-icon.svg?react';
+import BunnerComponents from '../Bunner/Bunner';
 
 const Header = styled.div`
   display: flex;
@@ -57,22 +58,25 @@ const Button = styled.button`
 
 export default function HeaderComponents() {
   return (
-    <Header>
-      <HeaderContent>
-        <HeaderLeftSide>
-          <LogoIcon />
-        </HeaderLeftSide>
-        <Alignment>
-          <HeaderInput />
-        </Alignment>
-        <HeaderDiv>
-          <Button>
-            <GlobeIcon />
-          </Button>
-          <P>nginep site</P>
-          <HeaderButton />
-        </HeaderDiv>
-      </HeaderContent>
-    </Header>
+    <>
+      <BunnerComponents />
+      <Header>
+        <HeaderContent>
+          <HeaderLeftSide>
+            <LogoIcon />
+          </HeaderLeftSide>
+          <Alignment>
+            <HeaderInput />
+          </Alignment>
+          <HeaderDiv>
+            <Button>
+              <GlobeIcon />
+            </Button>
+            <P>nginep site</P>
+            <HeaderButton />
+          </HeaderDiv>
+        </HeaderContent>
+      </Header>
+    </>
   );
 }
