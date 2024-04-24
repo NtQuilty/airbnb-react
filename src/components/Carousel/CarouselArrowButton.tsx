@@ -1,31 +1,28 @@
 import React, { PropsWithChildren, useCallback, useEffect, useState } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
-import './style.css';
 import styled from 'styled-components';
 import PrevButtonIcon from '../../assets/carousel/prev-button.svg?react';
 import NextButtonIcon from '../../assets/carousel/next-button.svg?react';
 
 const Button = styled.button`
   -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
-  -webkit-appearance: none;
   appearance: none;
   background-color: transparent;
   touch-action: manipulation;
-  display: inline-flex;
   text-decoration: none;
   cursor: pointer;
-  border: 0;
+  border: 1px solid var(--gray-color);
   padding: 0;
   margin: 0;
-  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 30px;
+  height: 30px;
   z-index: 1;
   border-radius: 50%;
   color: var(--text-body);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 0px 2px 0px #22222240;
 `;
 
 type UsePrevNextButtonsType = {
@@ -43,12 +40,12 @@ export const usePrevNextButtons = (
 
   const onPrevButtonClick = useCallback(() => {
     if (!emblaApi) return;
-    emblaApi.scrollPrev();
+    emblaApi.scrollTo(0);
   }, [emblaApi]);
 
   const onNextButtonClick = useCallback(() => {
     if (!emblaApi) return;
-    emblaApi.scrollNext();
+    emblaApi.scrollTo(9);
   }, [emblaApi]);
 
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {

@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { EmblaOptionsType } from 'embla-carousel';
 import { PrevButton, NextButton, usePrevNextButtons } from './CarouselArrowButton';
 import useEmblaCarousel from 'embla-carousel-react';
-import './style.css';
 import styled from 'styled-components';
 
 const DivFlex = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   width: auto;
   height: 105px;
+  padding: 0 45px;
 `;
 
 const DivHidden = styled.div`
   overflow: hidden;
+  width: 100%;
 `;
 
 const CarouselContainer = styled.div`
@@ -28,12 +28,9 @@ const IconSlide = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  margin-right: 20px;
-  margin-left: 20px;
 `;
 
-const IconButton = styled.button`
+const IconButton = styled.button<{ isDark?: boolean }>`
   width: 100%;
   background: none;
   border: none;
@@ -46,10 +43,37 @@ const IconButton = styled.button`
     transform: translateY(0.9px);
     box-shadow: 0 1px #666;
   }
+
+  & svg > path {
+    fill: ${(props) => (props.isDark ? '#3e3e3e' : undefined)};
+  }
+  color: ${(props) => (props.isDark ? '#3e3e3e' : undefined)};
 `;
 
-const IconText = styled.p`
+const IconButtonDark = styled.button`
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  &:active {
+    transform: translateY(0.9px);
+    box-shadow: 0 1px #666;
+  }
+
+  & svg > path {
+    fill: #3e3e3e;
+  }
+  /* filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(7500%) hue-rotate(359deg)
+    brightness(105%) contrast(105%); */
+`;
+
+const IconTitle = styled.span`
   padding-top: 13px;
+  color: var(--text-color);
 `;
 
 interface Icon {
@@ -62,30 +86,57 @@ type PropType = {
   options?: EmblaOptionsType;
 };
 
-const CarouselComponents: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
+const CarouselComponents: React.FC<PropType> = ({ slides, options }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  const handleMouseEnter = (index: number) => {
+    setActiveIndex(index);
+  };
 
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
     usePrevNextButtons(emblaApi);
-
-  const Console = () => {
-    console.log('Stegsid');
-  };
 
   return (
     <DivFlex>
       <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
       <DivHidden ref={emblaRef}>
         <CarouselContainer>
-          {slides.map((icon) => (
-            <IconButton key={icon.title} onClick={Console}>
-              <IconSlide>
-                <icon.src />
-                <IconText>{icon.title}</IconText>
-              </IconSlide>
-            </IconButton>
-          ))}
+          {slides.map((icon, index) =>
+            index === activeIndex ? (
+              <IconButtonDark
+                key={index}
+                onClick={() => setIsActive(true)}
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={() => {
+                  if (isActive) {
+                    handleMouseEnter(index);
+                    setIsActive(false);
+                  } else {
+                    setActiveIndex(null);
+                    setIsActive(false);
+                  }
+                }}
+              >
+                <IconSlide>
+                  <icon.src />
+                  <IconTitle>{icon.title}</IconTitle>
+                </IconSlide>
+              </IconButtonDark>
+            ) : (
+              <IconButton
+                key={icon.title}
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={() => setActiveIndex(null)}
+              >
+                <IconSlide>
+                  <icon.src />
+                  <IconTitle>{icon.title}</IconTitle>
+                </IconSlide>
+              </IconButton>
+            ),
+          )}
         </CarouselContainer>
       </DivHidden>
       <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />

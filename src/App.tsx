@@ -1,7 +1,9 @@
 import HeaderComponents from './components/Header/Header';
-import styled from 'styled-components';
 import CarouselComponents from './components/Carousel/Carousel';
-import { CarouselData } from './components/Carousel/CarouselData';
+import { CAROUSEL_DATA } from './components/Carousel/CarouselData';
+import GlobalStyle from './GlobalStyle';
+import 'reset-css';
+import styled from 'styled-components';
 
 const AppContainer = styled.div`
   max-width: 1440px;
@@ -11,8 +13,9 @@ const AppContainer = styled.div`
 function App() {
   return (
     <AppContainer>
+      <GlobalStyle />
       <HeaderComponents />
-      <CarouselComponents slides={CarouselData} />
+      <CarouselComponents slides={CAROUSEL_DATA} />
     </AppContainer>
   );
 }

@@ -8,19 +8,16 @@ import BunnerComponents from '../Bunner/Bunner';
 const Header = styled.div`
   display: flex;
   justify-content: center;
-  height: 90px;
+  height: 92px;
   border-top: 1px solid var(--gray-color);
   border-bottom: 1px solid var(--gray-color);
-  position: sticky;
-  top: 0;
-  width: 100%;
   box-sizing: border-box;
 `;
 
 const HeaderContent = styled.div`
   display: flex;
   align-items: center;
-  width: 1200px;
+  width: 1350px;
   padding: 0 45px;
   margin: 0 auto;
 `;
