@@ -1,6 +1,6 @@
 import HeaderComponents from './components/Header/Header';
-import CarouselComponents from './components/Carousel/Carousel';
-import { CAROUSEL_DATA } from './components/Carousel/CarouselData';
+import HeaderIconsCarousel from './components/HeaderIconsCarousel/HeaderIconsCarousel';
+import { ICON_SET } from './components/HeaderIconsCarousel/HeaderIconsGallery';
 import GlobalStyle from './GlobalStyle';
 import 'reset-css';
 import styled from 'styled-components';
@@ -15,7 +15,7 @@ function App() {
     <AppContainer>
       <GlobalStyle />
       <HeaderComponents />
-      <CarouselComponents slides={CAROUSEL_DATA} />
+      <HeaderIconsCarousel slides={ICON_SET} />
     </AppContainer>
   );
 }

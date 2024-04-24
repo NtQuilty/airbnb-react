@@ -10,7 +10,7 @@ import NewIcon from '../../assets/carousel/new-icon.svg?react';
 import PoolIcon from '../../assets/carousel/pool-icon.svg?react';
 import VectorIcon from '../../assets/carousel/vector-icon.svg?react';
 
-export const CAROUSEL_DATA = [
+export const ICON_SET = [
   { title: 'Beach', src: BeachIcon },
   { title: 'Boat', src: BoatIcon },
   { title: 'Calque', src: CalqueIcon },

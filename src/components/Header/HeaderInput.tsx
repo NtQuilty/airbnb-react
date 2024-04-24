@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import FilterIcon from '../../assets/filter-icon.svg?react';
 import SearchIcon from '../../assets/search-icon.svg?react';
 
-const Div = styled.div`
+const HeaderDiv = styled.div`
   height: 55px;
   position: relative;
   display: flex;
@@ -28,12 +28,13 @@ const Input = styled.input`
 
 export default function HeaderInput() {
   const input = useInput();
+  // Using redux. In the meantime, so
 
   return (
-    <Div>
+    <HeaderDiv>
       <FilterIcon width="24px" height="24px" />
       <Input type="text" {...input} placeholder={'Staycation to Bali'} />
       <SearchIcon width="30px" height="30px" />
-    </Div>
+    </HeaderDiv>
   );
 }

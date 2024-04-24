@@ -17,11 +17,9 @@ const Button = styled.button`
 
 export default function HeaderButton() {
   return (
-    <>
-      <Button>
-        <EllipsisIcon />
-        <UserIcon />
-      </Button>
-    </>
+    <Button>
+      <EllipsisIcon />
+      <UserIcon />
+    </Button>
   );
 }
