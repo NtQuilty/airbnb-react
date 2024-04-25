@@ -72,6 +72,7 @@ const SearchContainer = styled.div`
   width: 332px;
   box-shadow: 0px 0px 12px -2px #22222240;
   border-radius: 30px;
+  padding: 0;
 `;
 
 const FilterButton = styled.button`
@@ -97,10 +98,14 @@ const SearchInput = styled.input`
     background: var(--background);
     border-radius: 10px 20px 20px 10px;
   }
+  &::placeholder {
+    color: #bbbbbb;
+    font-weight: 300;
+  }
 `;
 
 const SearchButton = styled.button`
-  padding: 13px 15px;
+  padding: 10px 11px;
   background: var(--pink);
   border: none;
   border-radius: 50%;
@@ -108,6 +113,9 @@ const SearchButton = styled.button`
   cursor: pointer;
   &:hover {
     background: var(--dark-pink);
+  }
+  svg {
+    margin-bottom: -2px;
   }
 `;
 
