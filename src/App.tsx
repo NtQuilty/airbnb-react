@@ -1,22 +1,17 @@
-import HeaderComponents from './components/Header/Header';
-import HeaderIconsCarousel from './components/HeaderIconsCarousel/HeaderIconsCarousel';
-import { ICON_SET } from './components/HeaderIconsCarousel/HeaderIconsGallery';
+import styled from 'styled-components';
+import Header from './components/Header/Header';
+
 import GlobalStyle from './GlobalStyle';
 import 'reset-css';
-import styled from 'styled-components';
 
-const AppContainer = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-`;
+const AppWrapper = styled.div``;
 
 function App() {
   return (
-    <AppContainer>
+    <AppWrapper>
       <GlobalStyle />
-      <HeaderComponents />
-      <HeaderIconsCarousel slides={ICON_SET} />
-    </AppContainer>
+      <Header />
+    </AppWrapper>
   );
 }
 
