@@ -5,8 +5,6 @@ import GlobeIcon from '../../assets/headerIcon/globeIcon.svg?react';
 import EllipsisIcon from '../../assets/headerIcon/ellipsisIcon.svg?react';
 import UserIcon from '../../assets/headerIcon/userIcon.svg?react';
 import Banner from './Banner';
-import VacationFilterCarousel from './VacationFilterCarousel';
-import { ICON_SET } from '../../config';
 
 export default function Header() {
   return (
@@ -36,7 +34,6 @@ export default function Header() {
           </InfromationContainer>
         </HeaderContainer>
       </ShadowBox>
-      <VacationFilterCarousel slides={ICON_SET} />
     </HeaderWrapper>
   );
 }

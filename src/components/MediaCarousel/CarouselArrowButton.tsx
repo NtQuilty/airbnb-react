@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PrevButtonIcon from '../../assets/carousel/prevButton.svg?react';
 import NextButtonIcon from '../../assets/carousel/nextButton.svg?react';
-import { PropType } from './styled';
+import { PropType } from './type';
 
 export const PrevButton: React.FC<PropType> = (props) => {
   const { ...restProps } = props;
