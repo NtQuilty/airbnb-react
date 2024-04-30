@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
-import { UseDotButtonType, UsePrevNextButtonsType } from './styled';
+import { UseDotButtonType, UsePrevNextButtonsType } from './type';
 
 export const usePrevNextButtons = (
   emblaApi: EmblaCarouselType | undefined,
