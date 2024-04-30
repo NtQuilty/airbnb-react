@@ -11,15 +11,15 @@ import PoolIcon from './assets/carousel/poolIcon.svg?react';
 import DomesIcon from './assets/carousel/domesIcon.svg?react';
 
 export const ICON_SET = [
-  { label: 'Beach', src: BeachIcon },
-  { label: 'Beauty Pools', src: PoolIcon },
-  { label: 'New', src: NewIcon },
-  { label: 'Sleep Box', src: SleepBoxIcon },
-  { label: 'Boats', src: BoatsIcon },
-  { label: 'Camping', src: CampingIcon },
-  { label: 'Mensions', src: MensionsIcon },
-  { label: 'Islands', src: IslandsIcon },
-  { label: 'Desert', src: DesertIcon },
-  { label: 'Domes', src: DomesIcon },
-  { label: 'Cabins', src: CabinsIcon },
+  { label: 'Beach', component: BeachIcon },
+  { label: 'Beauty Pools', component: PoolIcon },
+  { label: 'New', component: NewIcon },
+  { label: 'Sleep Box', component: SleepBoxIcon },
+  { label: 'Boats', component: BoatsIcon },
+  { label: 'Camping', component: CampingIcon },
+  { label: 'Mensions', component: MensionsIcon },
+  { label: 'Islands', component: IslandsIcon },
+  { label: 'Desert', component: DesertIcon },
+  { label: 'Domes', component: DomesIcon },
+  { label: 'Cabins', component: CabinsIcon },
 ];

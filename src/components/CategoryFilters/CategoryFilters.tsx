@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { PrevButton, NextButton } from '../MediaCarousel/CarouselArrowButton';
 import useEmblaCarousel from 'embla-carousel-react';
 import styled from 'styled-components';
-import { Icon } from './styled';
 import { EmblaOptionsType } from 'embla-carousel';
-import { usePrevNextButtons } from '../MediaCarousel/hook';
+import { usePrevNextButtons } from '../MediaCarousel/hooks';
+import { Icon } from './type';
 
 interface PropType {
   slides: Icon[];
   options?: EmblaOptionsType;
 }
 
-const VacationFilterCarousel: React.FC<PropType> = ({ slides, options }) => {
+export const CategoryFilters: React.FC<PropType> = ({ slides, options }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [activeIcon, setActiveIcon] = useState<number>(0);
 
@@ -24,14 +24,14 @@ const VacationFilterCarousel: React.FC<PropType> = ({ slides, options }) => {
       <CarouselVisible ref={emblaRef}>
         <CarouselContainer>
           {slides.map((icon, index) => {
-            const Icon = <icon.src />;
+            const Icon = icon.component;
             return (
               <VacationChoiceButton
                 key={icon.label}
                 onClick={() => setActiveIcon(index)}
                 isActive={activeIcon === index}
               >
-                {Icon}
+                <Icon />
                 <Label>{icon.label}</Label>
               </VacationChoiceButton>
             );
@@ -42,8 +42,6 @@ const VacationFilterCarousel: React.FC<PropType> = ({ slides, options }) => {
     </CarouselWrapper>
   );
 };
-
-export default VacationFilterCarousel;
 
 const CarouselWrapper = styled.div`
   display: flex;
