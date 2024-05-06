@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import PrevButtonIcon from '../../assets/carousel/prevButton.svg?react';
 import NextButtonIcon from '../../assets/carousel/nextButton.svg?react';
-import { PropType } from './type';
+import { ButtonProps } from './types';
 
-export const PrevButton: React.FC<PropType> = (props) => {
+export const PrevButton: React.FC<ButtonProps> = (props) => {
   const { ...restProps } = props;
 
   return (
@@ -14,7 +14,7 @@ export const PrevButton: React.FC<PropType> = (props) => {
   );
 };
 
-export const NextButton: React.FC<PropType> = (props) => {
+export const NextButton: React.FC<ButtonProps> = (props) => {
   const { children, ...restProps } = props;
 
   return (

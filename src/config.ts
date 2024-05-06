@@ -10,6 +10,8 @@ import NewIcon from './assets/carousel/newIcon.svg?react';
 import PoolIcon from './assets/carousel/poolIcon.svg?react';
 import DomesIcon from './assets/carousel/domesIcon.svg?react';
 
+export type IconType = (typeof ICON_SET)[number];
+
 export const ICON_SET = [
   { label: 'Beach', component: BeachIcon },
   { label: 'Beauty Pools', component: PoolIcon },

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import CrossIcon from '../../assets/headerIcon/crossIcon.svg?react';
 
-export default function Banner() {
+export const Banner = () => {
   const [isVisible, setIsVisible] = useState(() => {
     const savedState = localStorage.getItem('Banner');
     return savedState ? JSON.parse(savedState) : true;
@@ -27,7 +27,7 @@ export default function Banner() {
       </BannerContainer>
     </BackgroundContainer>
   );
-}
+};
 
 const BackgroundContainer = styled.div`
   background: var(--background);

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   :root {
     --font: 'Poppins', sans-serif;
     --white: #ffffff;
@@ -17,5 +17,3 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--font);
   };
 `;
-
-export default GlobalStyle;

@@ -4,9 +4,9 @@ import SearchIcon from '../../assets/headerIcon/searchIcon.svg?react';
 import GlobeIcon from '../../assets/headerIcon/globeIcon.svg?react';
 import EllipsisIcon from '../../assets/headerIcon/ellipsisIcon.svg?react';
 import UserIcon from '../../assets/headerIcon/userIcon.svg?react';
-import Banner from './Banner';
+import { Banner } from './Banner';
 
-export default function Header() {
+export const Header = () => {
   return (
     <HeaderWrapper>
       <Banner />
@@ -36,7 +36,7 @@ export default function Header() {
       </ShadowBox>
     </HeaderWrapper>
   );
-}
+};
 
 const HeaderWrapper = styled.div``;
 
@@ -66,7 +66,7 @@ const SearchContainer = styled.div`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 332px;
+  max-width: 332px;
   box-shadow: 0px 0px 12px -2px #22222240;
   border-radius: 30px;
   padding: 0;

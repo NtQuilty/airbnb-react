@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
-import { PrevButton, NextButton } from '../MediaCarousel/CarouselArrowButton';
+import { useState } from 'react';
+import { PrevButton, NextButton } from './PrevNextButton';
 import useEmblaCarousel from 'embla-carousel-react';
 import styled from 'styled-components';
-import { EmblaOptionsType } from 'embla-carousel';
-import { usePrevNextButtons } from '../MediaCarousel/hooks';
-import { Icon } from './type';
+import { usePrevNextButtons } from './hooks';
+import { IconType, ICON_SET } from '../../config';
 
-interface PropType {
-  slides: Icon[];
-  options?: EmblaOptionsType;
-}
-
-export const CategoryFilters: React.FC<PropType> = ({ slides, options }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+export const CategoryFilters = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel();
   const [activeIcon, setActiveIcon] = useState<number>(0);
 
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
@@ -23,7 +17,7 @@ export const CategoryFilters: React.FC<PropType> = ({ slides, options }) => {
       <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
       <CarouselVisible ref={emblaRef}>
         <CarouselContainer>
-          {slides.map((icon, index) => {
+          {ICON_SET.map((icon: IconType, index) => {
             const Icon = icon.component;
             return (
               <VacationChoiceButton
@@ -100,4 +94,5 @@ const VacationChoiceButton = styled.button<{ isActive: boolean }>`
 const Label = styled.span`
   padding: 13px 0 16px;
   font-size: 12px;
+  white-space: nowrap;
 `;

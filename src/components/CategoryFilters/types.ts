@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 
-export type PropType = PropsWithChildren<
+export type ButtonProps = PropsWithChildren<
   React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 >;
 
@@ -9,10 +9,4 @@ export interface UsePrevNextButtonsType {
   nextBtnDisabled: boolean;
   onPrevButtonClick: () => void;
   onNextButtonClick: () => void;
-}
-
-export interface UseDotButtonType {
-  selectedIndex: number;
-  scrollSnaps: number[];
-  onDotButtonClick: (index: number) => void;
 }

@@ -1,20 +1,17 @@
 import styled from 'styled-components';
-import Header from './components/Header/Header';
-import GlobalStyle from './GlobalStyle';
+import { Header } from './components/Header/Header';
+import { GlobalStyle } from './GlobalStyle';
 import 'reset-css';
 import { CategoryFilters } from './components/CategoryFilters/CategoryFilters';
-import { ICON_SET } from './config';
 
 const AppWrapper = styled.div``;
 
-function App() {
+export const App = () => {
   return (
     <AppWrapper>
       <GlobalStyle />
       <Header />
-      <CategoryFilters slides={ICON_SET} />
+      <CategoryFilters />
     </AppWrapper>
   );
-}
-
-export default App;
+};
