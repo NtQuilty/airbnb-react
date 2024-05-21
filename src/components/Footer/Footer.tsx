@@ -39,21 +39,22 @@ const FooterWrapper = styled.div`
   bottom: 0;
   width: 100%;
   background-color: var(--white);
-  box-shadow: 0px 0px 2px 0px #22222240;
+  box-shadow: 0px 0px 2px 0px var(--box-shadow);
 `;
 
 const FooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 45px;
-  padding: 15px 0;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 15px 45px;
 `;
 const LegalSection = styled.div`
   display: flex;
   font-size: 14px;
   font-weight: 300;
   line-height: 21px;
-  color: #3e3e3e; //TODO: css-variables SMDMHCE
+  color: var(--dark-gray);
 `;
 
 const CopyrightText = styled.span``;
@@ -74,7 +75,7 @@ const ListItem = styled.li`
 `;
 
 const FooterLink = styled.a`
-  color: #3e3e3e; //TODO: css-variables SMDMHCE
+  color: var(--dark-gray);
   text-decoration: none;
   &:hover {
     text-decoration: underline;

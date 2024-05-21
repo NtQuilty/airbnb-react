@@ -5,11 +5,13 @@ import { Header } from './components/Header/Header';
 import { GlobalStyle } from './GlobalStyle';
 import 'reset-css';
 import { CategoryFilters } from './components/CategoryFilters/CategoryFilters';
+import { Banner } from './components/Header/Banner';
 
 export const App = () => {
   return (
     <>
       <GlobalStyle />
+      <Banner />
       <Header />
       <CategoryFilters />
       <MainContent />

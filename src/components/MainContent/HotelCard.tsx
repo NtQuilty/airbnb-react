@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import StarIcon from '../../assets/secondPage/icon/star-icon.svg?react';
+import StarIcon from '../../assets/secondPage/icon/starIcon.svg?react';
 import HeartIcon from '../../assets/heartIcon.svg?react';
-import PrevButtonIcon from '../../assets/carousel/prev-button.svg?react';
-import NextButtonIcon from '../../assets/carousel/next-button.svg?react';
+import PrevButtonIcon from '../../assets/carousel/prevButton.svg?react';
+import NextButtonIcon from '../../assets/carousel/nextButton.svg?react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { usePrevNextButtons } from '../MediaCarousel/CarouselArrowButton';
+import { usePrevNextButtons } from '../hooks/usePrevNextButtons';
 import { MainContentType } from '../../config';
-import { useDotButton } from '../hooks/DotButton';
+import { useDotButton } from '../hooks/useDotButton';
 
 interface HotelCardProps {
   hotel: MainContentType;
@@ -130,9 +130,7 @@ const HeartButton = styled.button<HeartButtonProps>`
   border: none;
   svg {
     fill: ${(props) =>
-      props.likedAds.includes(props.hotelId)
-        ? 'var(--pink)' //TODO: css-variables SMDMHCE
-        : 'var(--fill-heart)'};
+      props.likedAds.includes(props.hotelId) ? 'var(--pink)' : 'rgba(0, 0, 0, 0.5)'};
     fill-opacity: 1;
   }
   &:hover svg {
@@ -142,6 +140,9 @@ const HeartButton = styled.button<HeartButtonProps>`
 `;
 
 const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -149,26 +150,25 @@ const Button = styled.button`
   cursor: pointer;
   border: none;
   border-radius: 50%;
-  box-shadow: 0px 0px 2px 0px #22222240;
-
+  box-shadow: 0px 0px 2px 0px var(--box-shadow);
   ${HotelCardWrapper}:hover & {
     opacity: 0.8;
     transition: 0.5s ease;
   }
   &:hover {
-    transform: scale(1.1) translateY(-46%);
+    transform: scale(1.1) translateY(-52%);
     transform-origin: center;
     opacity: 1 !important;
   }
 `;
 const PrevButton = styled(Button)`
   left: 10px;
-  padding: 11px 13px 11px 12px;
+  padding: 9px;
 `;
 
 const NextButton = styled(Button)`
   right: 15px;
-  padding: 11px 12px 11px 13px;
+  padding: 9px;
 `;
 
 const DotButtonContainer = styled.div`
@@ -186,7 +186,7 @@ const DotButton = styled.button<{ isSelected: boolean }>`
   border: none;
   background: #ffffff73;
   transform: ${(props) => (props.isSelected ? `scale(1.1)` : undefined)};
-  background: ${(props) => (props.isSelected ? `white` : `#ffffff73`)};
+  background: ${(props) => (props.isSelected ? `var(--white)` : `#ffffff73`)};
 `;
 
 const HotelInfo = styled.div`
@@ -194,7 +194,7 @@ const HotelInfo = styled.div`
   justify-content: space-between;
   align-items: start;
   gap: 10px;
-  color: #3e3e3e; //TODO: css-variables SMDMHCE
+  color: var(--dark-gray);
   font-weight: 300;
   font-size: 14px;
   width: 100%;

@@ -48,6 +48,8 @@ export const MainContent = () => {
 };
 
 const MainContentWrapper = styled.div`
+  max-width: 1350px;
+  margin: 0 auto;
   padding: 20px 45px;
   display: flex;
   flex-direction: column;
