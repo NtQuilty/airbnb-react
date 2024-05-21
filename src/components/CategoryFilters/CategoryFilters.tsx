@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { PrevButton, NextButton, usePrevNextButtons } from '../MediaCarousel/CarouselArrowButton';
+import { PrevButton, NextButton } from './PrevNextButton';
 import useEmblaCarousel from 'embla-carousel-react';
 import styled from 'styled-components';
-import { ICON_SET, IconType } from '../../config';
+import { usePrevNextButtons } from './hooks';
+import { IconType, ICON_SET } from '../../config';
 
 export const CategoryFilters = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel();

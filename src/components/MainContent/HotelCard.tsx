@@ -131,7 +131,7 @@ const HeartButton = styled.button<HeartButtonProps>`
   svg {
     fill: ${(props) =>
       props.likedAds.includes(props.hotelId)
-        ? 'var(--heart)' //TODO: css-variables SMDMHCE
+        ? 'var(--pink)' //TODO: css-variables SMDMHCE
         : 'var(--fill-heart)'};
     fill-opacity: 1;
   }

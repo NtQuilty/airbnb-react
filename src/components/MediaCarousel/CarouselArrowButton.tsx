@@ -10,7 +10,7 @@ const Button = styled.button`
   touch-action: manipulation;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid var(--gray-color);
+  border: 1px solid var(--gray);
   padding: 0;
   margin: 0;
   width: 30px;
