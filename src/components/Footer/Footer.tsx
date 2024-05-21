@@ -49,7 +49,7 @@ const FooterContainer = styled.div`
   margin: 0 auto;
   padding: 15px 45px;
 `;
-const LegalSection = styled.div`
+const LegalSection = styled.section`
   display: flex;
   font-size: 14px;
   font-weight: 300;
@@ -81,7 +81,7 @@ const FooterLink = styled.a`
     text-decoration: underline;
   }
 `;
-const InfoSection = styled.div`
+const InfoSection = styled.section`
   display: flex;
   gap: 32px;
   font-size: 14px;

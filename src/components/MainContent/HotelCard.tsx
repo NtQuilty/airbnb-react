@@ -11,16 +11,10 @@ import { useDotButton } from '../hooks/useDotButton';
 interface HotelCardProps {
   hotel: MainContentType;
   likedAds: number[];
-  addRemoveFavorites: (hotelId: number) => void;
+  toggleFavorites: (hotelId: number) => void;
 }
 
-interface HeartButtonProps {
-  onClick: () => void;
-  likedAds: number[];
-  hotelId: number;
-}
-
-export const HotelCard = ({ hotel, likedAds, addRemoveFavorites }: HotelCardProps) => {
+export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
@@ -41,7 +35,7 @@ export const HotelCard = ({ hotel, likedAds, addRemoveFavorites }: HotelCardProp
           })}
         </HotelImageCarousel>
         <HeartButton
-          onClick={() => addRemoveFavorites(hotel.id)}
+          onClick={() => toggleFavorites(hotel.id)}
           likedAds={likedAds}
           hotelId={hotel.id}
         >
@@ -57,11 +51,11 @@ export const HotelCard = ({ hotel, likedAds, addRemoveFavorites }: HotelCardProp
             <NextButtonIcon />
           </NextButton>
         )}
-        <DotButtonContainer>
+        <DotButtonsContainer>
           {scrollSnaps.map((_, index) => (
             <DotButton key={index} isSelected={index === selectedIndex} />
           ))}
-        </DotButtonContainer>
+        </DotButtonsContainer>
       </HotelImageWrapper>
       <HotelInfo>
         <HotelSummary>
@@ -121,6 +115,12 @@ const HotelImage = styled.img`
   }
 `;
 
+interface HeartButtonProps {
+  onClick: () => void;
+  likedAds: number[];
+  hotelId: number;
+}
+
 const HeartButton = styled.button<HeartButtonProps>`
   position: absolute;
   top: 15px;
@@ -171,7 +171,7 @@ const NextButton = styled(Button)`
   padding: 9px;
 `;
 
-const DotButtonContainer = styled.div`
+const DotButtonsContainer = styled.div`
   display: flex;
   gap: 5px;
   position: absolute;

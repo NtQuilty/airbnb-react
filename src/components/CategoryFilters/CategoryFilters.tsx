@@ -15,9 +15,9 @@ export const CategoryFilters = () => {
 
   return (
     <CarouselWrapper>
-      <PrevNextButtons onClick={onPrevButtonClick} disabled={prevBtnDisabled}>
+      <PrevNextButton onClick={onPrevButtonClick} disabled={prevBtnDisabled}>
         <PrevButtonIcon />
-      </PrevNextButtons>
+      </PrevNextButton>
       <CarouselVisible ref={emblaRef}>
         <CarouselContainer>
           {ICON_SET.map((icon: IconType, index) => {
@@ -35,9 +35,9 @@ export const CategoryFilters = () => {
           })}
         </CarouselContainer>
       </CarouselVisible>
-      <PrevNextButtons onClick={onNextButtonClick} disabled={nextBtnDisabled}>
+      <PrevNextButton onClick={onNextButtonClick} disabled={nextBtnDisabled}>
         <NextButtonIcon />
-      </PrevNextButtons>
+      </PrevNextButton>
     </CarouselWrapper>
   );
 };
@@ -102,7 +102,7 @@ const Label = styled.span`
   white-space: nowrap;
 `;
 
-const PrevNextButtons = styled.button`
+const PrevNextButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;

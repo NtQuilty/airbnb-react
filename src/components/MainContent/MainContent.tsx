@@ -10,7 +10,7 @@ export const MainContent = () => {
     return storedLikedAds ? JSON.parse(storedLikedAds) : [];
   });
 
-  const addRemoveFavorites = (hotelId: number) => {
+  const toggleFavorites = (hotelId: number) => {
     setLikedAds((likedAds: number[]) => {
       if (likedAds.includes(hotelId)) {
         return likedAds.filter((id) => id !== hotelId);
@@ -34,15 +34,15 @@ export const MainContent = () => {
               hotel={hotel}
               key={hotel.id}
               likedAds={likedAds}
-              addRemoveFavorites={addRemoveFavorites}
+              toggleFavorites={toggleFavorites}
             />
           );
         })}
       </HotelsContainer>
-      <HotelMapToggle>
+      <ShowMapButton>
         <ToggleText>Show map</ToggleText>
         <MapIcon />
-      </HotelMapToggle>
+      </ShowMapButton>
     </MainContentWrapper>
   );
 };
@@ -64,7 +64,7 @@ const HotelsContainer = styled.div`
   gap: 30px;
 `;
 
-const HotelMapToggle = styled.button`
+const ShowMapButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
