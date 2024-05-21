@@ -5,7 +5,6 @@ import PrevButtonIcon from '../../assets/carousel/prev-button.svg?react';
 import NextButtonIcon from '../../assets/carousel/next-button.svg?react';
 
 const Button = styled.button`
-  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
   appearance: none;
   background-color: transparent;
   touch-action: manipulation;
@@ -25,16 +24,16 @@ const Button = styled.button`
   box-shadow: 0px 0px 2px 0px #22222240;
 `;
 
-type UsePrevNextButtonsType = {
+interface UsePrevNextButtonsProps {
   prevBtnDisabled: boolean;
   nextBtnDisabled: boolean;
   onPrevButtonClick: () => void;
   onNextButtonClick: () => void;
-};
+}
 
 export const usePrevNextButtons = (
   emblaApi: EmblaCarouselType | undefined,
-): UsePrevNextButtonsType => {
+): UsePrevNextButtonsProps => {
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
 
@@ -73,24 +72,18 @@ type PropType = PropsWithChildren<
   React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 >;
 
-export const PrevButton: React.FC<PropType> = (props) => {
-  const { children, ...restProps } = props;
-
+export const PrevButton: React.FC<PropType> = () => {
   return (
-    <Button {...restProps}>
+    <Button type="button">
       <PrevButtonIcon />
-      {children}
     </Button>
   );
 };
 
-export const NextButton: React.FC<PropType> = (props) => {
-  const { children, ...restProps } = props;
-
+export const NextButton: React.FC<PropType> = () => {
   return (
-    <Button type="button" {...restProps}>
+    <Button type="button">
       <NextButtonIcon />
-      {children}
     </Button>
   );
 };

@@ -7,11 +7,11 @@ const GlobalStyle = createGlobalStyle`
   --white: #ffffff;
   --text-color: #B8B8B8;
   --black:#1E1E1E;
-  --heart: #ff385c;
+  --heart: #FF385C;
+  --fill-heart: rgba(0, 0, 0, 0.5);
+
 }
 body {
-  max-width: 1440px;
-  margin: 0 auto;
   font-family: var(--font);
 };
 `;

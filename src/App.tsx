@@ -1,11 +1,10 @@
 import HeaderComponents from './components/Header/Header';
-import HeaderIconsCarousel from './components/HeaderIconsCarousel/HeaderIconsCarousel';
-import { ICON_SET } from './components/HeaderIconsCarousel/HeaderIconsGallery';
 import GlobalStyle from './GlobalStyle';
 import 'reset-css';
 import styled from 'styled-components';
-import { HotelList } from './components/MainContent/HotelsList';
-import { MAIN_CONTENT_DATA } from './config';
+import { MainContent } from './components/MainContent/MainContent';
+import { CategoryFilters } from './components/CategoryFilters/CategoryFilters';
+import { Footer } from './components/Footer/Footer';
 
 const AppContainer = styled.div`
   max-width: 1440px;
@@ -17,8 +16,9 @@ function App() {
     <AppContainer>
       <GlobalStyle />
       <HeaderComponents />
-      <HeaderIconsCarousel slides={ICON_SET} />
-      <HotelList hotels={MAIN_CONTENT_DATA} />
+      <CategoryFilters />
+      <MainContent />
+      <Footer />
     </AppContainer>
   );
 }

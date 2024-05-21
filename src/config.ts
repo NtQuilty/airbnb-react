@@ -11,6 +11,35 @@ import karangasemTwo from '../public/images/main/ten.png';
 import seminyakTwo from '../public/images/main/eleven.png';
 import cangguFree from '../public/images/main/twelve.png';
 import nkCity from '../public/images/main/nk.png';
+import BeachIcon from './assets/carousel/beach-icon.svg?react';
+import BoatIcon from './assets/carousel/boat-icon.svg?react';
+import CalqueIcon from './assets/carousel/calque-icon.svg?react';
+import ContainerIcon from './assets/carousel/container-icon.svg?react';
+import GroupIcon from './assets/carousel/group-icon.svg?react';
+import IslandIcon from './assets/carousel/island-icon.svg?react';
+import LayerIcon from './assets/carousel/layer-icon.svg?react';
+import MensionIcon from './assets/carousel/mension-icon.svg?react';
+import NewIcon from './assets/carousel/new-icon.svg?react';
+import PoolIcon from './assets/carousel/pool-icon.svg?react';
+import VectorIcon from './assets/carousel/vector-icon.svg?react';
+
+export type IconType = (typeof ICON_SET)[number];
+
+export const ICON_SET = [
+  { label: 'Beach', component: BeachIcon },
+  { label: 'Boat', component: BoatIcon },
+  { label: 'Calque', component: CalqueIcon },
+  { label: 'Container', component: ContainerIcon },
+  { label: 'Group', component: GroupIcon },
+  { label: 'Island', component: IslandIcon },
+  { label: 'Layer', component: LayerIcon },
+  { label: 'Mension', component: MensionIcon },
+  { label: 'New', component: NewIcon },
+  { label: 'Pool', component: PoolIcon },
+  { label: 'Vector', component: VectorIcon },
+];
+
+export type MainContentType = (typeof MAIN_CONTENT_DATA)[number];
 
 export const MAIN_CONTENT_DATA = [
   {
