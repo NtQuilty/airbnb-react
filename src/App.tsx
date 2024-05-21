@@ -1,17 +1,20 @@
-import styled from 'styled-components';
+import 'reset-css';
+import { MainContent } from './components/MainContent/MainContent';
+import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { GlobalStyle } from './GlobalStyle';
-import 'reset-css';
 import { CategoryFilters } from './components/CategoryFilters/CategoryFilters';
-
-const AppWrapper = styled.div``;
+import { Banner } from './components/Header/Banner';
 
 export const App = () => {
   return (
-    <AppWrapper>
+    <>
       <GlobalStyle />
+      <Banner />
       <Header />
       <CategoryFilters />
-    </AppWrapper>
+      <MainContent />
+      <Footer />
+    </>
   );
 };

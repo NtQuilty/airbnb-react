@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { PrevButton, NextButton } from './PrevNextButton';
 import useEmblaCarousel from 'embla-carousel-react';
 import styled from 'styled-components';
-import { usePrevNextButtons } from './hooks';
+import { usePrevNextButtons } from '../hooks/usePrevNextButtons';
 import { IconType, ICON_SET } from '../../config';
+import PrevButtonIcon from '../../assets/carousel/prevButton.svg?react';
+import NextButtonIcon from '../../assets/carousel/nextButton.svg?react';
 
 export const CategoryFilters = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
@@ -14,7 +15,9 @@ export const CategoryFilters = () => {
 
   return (
     <CarouselWrapper>
-      <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+      <PrevNextButton onClick={onPrevButtonClick} disabled={prevBtnDisabled}>
+        <PrevButtonIcon />
+      </PrevNextButton>
       <CarouselVisible ref={emblaRef}>
         <CarouselContainer>
           {ICON_SET.map((icon: IconType, index) => {
@@ -32,7 +35,9 @@ export const CategoryFilters = () => {
           })}
         </CarouselContainer>
       </CarouselVisible>
-      <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+      <PrevNextButton onClick={onNextButtonClick} disabled={nextBtnDisabled}>
+        <NextButtonIcon />
+      </PrevNextButton>
     </CarouselWrapper>
   );
 };
@@ -41,7 +46,7 @@ const CarouselWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 45px 20px;
+  padding: 15px 45px 0px;
   max-width: 1350px;
   margin: 0 auto;
 `;
@@ -95,4 +100,20 @@ const Label = styled.span`
   padding: 13px 0 16px;
   font-size: 12px;
   white-space: nowrap;
+`;
+
+const PrevNextButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid var(--gray);
+  padding: 9px;
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: 0px 0px 2px 0px var(--box-shadow);
 `;

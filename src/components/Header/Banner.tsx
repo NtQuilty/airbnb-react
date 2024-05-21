@@ -30,7 +30,7 @@ export const Banner = () => {
 };
 
 const BackgroundContainer = styled.div`
-  background: var(--background);
+  background: var(--gray);
 `;
 
 const BannerContainer = styled.div`
