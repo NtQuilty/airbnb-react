@@ -1,7 +1,17 @@
-import './App.css';
+import styled from 'styled-components';
+import { Header } from './components/Header/Header';
+import { GlobalStyle } from './GlobalStyle';
+import 'reset-css';
+import { CategoryFilters } from './components/CategoryFilters/CategoryFilters';
 
-function App() {
-  return <></>;
-}
+const AppWrapper = styled.div``;
 
-export default App;
+export const App = () => {
+  return (
+    <AppWrapper>
+      <GlobalStyle />
+      <Header />
+      <CategoryFilters />
+    </AppWrapper>
+  );
+};

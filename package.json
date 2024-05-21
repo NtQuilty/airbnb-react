@@ -12,10 +12,14 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
+    "embla-carousel-react": "^8.0.2",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.1.8"
+    "react-multi-carousel": "^2.8.5",
+    "reset-css": "^5.0.2",
+    "styled-components": "^6.1.8",
+    "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
