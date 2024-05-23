@@ -16,4 +16,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: var(--font);
   };
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;

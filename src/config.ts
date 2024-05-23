@@ -45,17 +45,24 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 0,
     img: [nusaCeningan, nkCity, nusaCeningan, nkCity],
-    title: 'Nusa Ceningan, Indonesia',
+    title: 'Beautiful villa on the edge of BLUE LAGOON',
+    location: 'Nusa Ceningan, Indonesia',
     rating: 4.83,
     distance: 'On the beach',
     date: 'Apr 7 - 12',
     price: 'Rp2,250,000 ',
     filter: [],
+    reviews: '1800 ',
+    owner: 'Mr Ifran',
+    guest: 1,
+    bedroom: 1,
+    bed: 1,
+    bathroom: 1,
   },
   {
     id: 1,
     img: [lovinaSeririt, nkCity, lovinaSeririt, nkCity],
-    title: 'Lovina Seririt, Indonesia',
+    location: 'Lovina Seririt, Indonesia',
     rating: 4.89,
     distance: '53 kilometers away',
     date: 'May 6 - 11',
@@ -65,7 +72,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 2,
     img: [kutuh, nkCity, kutuh, nkCity],
-    title: 'Kutuh, Indonesia',
+    location: 'Kutuh, Indonesia',
     rating: 4.8,
     distance: 'On pandawa beach',
     date: 'Jun 20 - 25',
@@ -75,7 +82,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 3,
     img: [karangasem, nkCity, karangasem, nkCity],
-    title: 'Karangasem, Indonesia',
+    location: 'Karangasem, Indonesia',
     rating: 4.83,
     distance: 'Near Pantai Ujung',
     date: 'Apr 12 - 17',
@@ -85,7 +92,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 4,
     img: [seminyak, nkCity, seminyak, nkCity],
-    title: 'Seminyak, Indonesia',
+    location: 'Seminyak, Indonesia',
     rating: 4.81,
     distance: '2 min to Seminyak Beach',
     date: 'Oct 4 - 9',
@@ -95,7 +102,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 5,
     img: [badung, nkCity, badung, nkCity],
-    title: 'Badung, Indonesia',
+    location: 'Badung, Indonesia',
     rating: 4.89,
     distance: '1 min to Seminyak Beach',
     date: 'May 2 - 7',
@@ -105,7 +112,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 6,
     img: [canggu, nkCity, canggu, nkCity],
-    title: 'Canggu, Indonesia',
+    location: 'Canggu, Indonesia',
     rating: 5.0,
     distance: '11 kilometers away',
     date: 'May 3 - 8',
@@ -115,7 +122,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 7,
     img: [cangguTwo, nkCity, cangguTwo, nkCity],
-    title: 'Canggu, Indonesia',
+    location: 'Canggu, Indonesia',
     rating: 4.88,
     distance: '4 min to Seminyak Beach',
     date: 'Apr 8 - 15',
@@ -125,7 +132,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 8,
     img: [nusaCeninganTwo, nkCity, nusaCeninganTwo, nkCity],
-    title: 'Nusa Ceningan, Indonesia',
+    location: 'Nusa Ceningan, Indonesia',
     rating: 4.83,
     distance: 'On the beach',
     date: 'Apr 7 - 12',
@@ -135,7 +142,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 9,
     img: [karangasemTwo, nkCity, karangasemTwo, nkCity],
-    title: 'Karangasem, Indonesia',
+    location: 'Karangasem, Indonesia',
     rating: 4.83,
     distance: 'Near Pantai Ujung',
     date: 'Apr 12 - 17',
@@ -145,7 +152,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 10,
     img: [seminyakTwo, nkCity, seminyakTwo, nkCity],
-    title: 'Seminyak, Indonesia',
+    location: 'Seminyak, Indonesia',
     rating: 4.81,
     distance: '2 min to Seminyak Beach',
     date: 'Oct 4 - 9',
@@ -155,7 +162,7 @@ export const MAIN_CONTENT_DATA = [
   {
     id: 11,
     img: [cangguFree, nkCity, cangguFree, nkCity],
-    title: 'Canggu, Indonesia',
+    location: 'Canggu, Indonesia',
     rating: 5.0,
     distance: '11 kilometers away',
     date: 'May 3- 8',

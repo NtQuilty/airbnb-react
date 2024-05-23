@@ -17,6 +17,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-multi-carousel": "^2.8.5",
+    "react-router-dom": "^6.23.1",
     "reset-css": "^5.0.2",
     "styled-components": "^6.1.8",
     "vite-plugin-svgr": "^4.2.0"

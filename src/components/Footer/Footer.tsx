@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import facebookIcon from '../../assets/secondPage/icon/facebookIcon.svg?react';
+import instagramIcon from '../../assets/secondPage/icon/instagramIcon.svg?react';
+import twitterIcon from '../../assets/secondPage/icon/twitterIcon.svg?react';
 
 export const Footer = () => {
   return (

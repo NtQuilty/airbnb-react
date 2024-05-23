@@ -7,6 +7,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { usePrevNextButtons } from '../hooks/usePrevNextButtons';
 import { MainContentType } from '../../config';
 import { useDotButton } from '../hooks/useDotButton';
+import { useNavigate } from 'react-router-dom';
 
 interface HotelCardProps {
   hotel: MainContentType;
@@ -22,8 +23,24 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
 
   const { selectedIndex, scrollSnaps } = useDotButton(emblaApi);
 
+  const navigate = useNavigate();
+
+  const goToDetail: React.MouseEventHandler<HTMLAnchorElement> = () => {
+    navigate(`hotel/${hotel.id}`);
+  };
+
+  const handlePrevButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    onPrevButtonClick();
+  };
+
+  const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    onNextButtonClick();
+  };
+
   return (
-    <HotelCardWrapper>
+    <HotelCardWrapper onClick={goToDetail}>
       <HotelImageWrapper ref={emblaRef}>
         <HotelImageCarousel>
           {hotel.img.map((img, index) => {
@@ -35,19 +52,22 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
           })}
         </HotelImageCarousel>
         <HeartButton
-          onClick={() => toggleFavorites(hotel.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleFavorites(hotel.id);
+          }}
           likedAds={likedAds}
           hotelId={hotel.id}
         >
           <HeartIcon />
         </HeartButton>
         {!prevBtnDisabled && (
-          <PrevButton onClick={onPrevButtonClick}>
+          <PrevButton onClick={handlePrevButtonClick}>
             <PrevButtonIcon />
           </PrevButton>
         )}
         {!nextBtnDisabled && (
-          <NextButton onClick={onNextButtonClick}>
+          <NextButton onClick={handleNextButtonClick}>
             <NextButtonIcon />
           </NextButton>
         )}
@@ -59,7 +79,7 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
       </HotelImageWrapper>
       <HotelInfo>
         <HotelSummary>
-          <Title>{hotel.title}</Title>
+          <Location>{hotel.location}</Location>
           <Distance> {hotel.distance}</Distance>
           <Date> {hotel.date}</Date>
           <Price>
@@ -116,7 +136,7 @@ const HotelImage = styled.img`
 `;
 
 interface HeartButtonProps {
-  onClick: () => void;
+  onClick: React.MouseEventHandler<HTMLAnchorElement>;
   likedAds: number[];
   hotelId: number;
 }
@@ -161,12 +181,17 @@ const Button = styled.button`
     opacity: 1 !important;
   }
 `;
-const PrevButton = styled(Button)`
+
+interface ButtonProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const PrevButton = styled(Button)<ButtonProps>`
   left: 10px;
   padding: 9px;
 `;
 
-const NextButton = styled(Button)`
+const NextButton = styled(Button)<ButtonProps>`
   right: 15px;
   padding: 9px;
 `;
@@ -206,7 +231,7 @@ const HotelSummary = styled.div`
   gap: 10px;
 `;
 
-const Title = styled.div`
+const Location = styled.div`
   font-weight: 500;
 `;
 const Raiting = styled.div`
