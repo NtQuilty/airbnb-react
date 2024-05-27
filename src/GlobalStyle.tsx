@@ -11,7 +11,8 @@ export const GlobalStyle = createGlobalStyle`
     --pink: #FF385C;
     --dark-pink: #d22b49;
     --button-hover-fill: #717171;
-    --box-shadow: #22222240
+    --box-shadow: #22222240;
+    --border: #e6e6e6;
   }
   body {
     font-family: var(--font);

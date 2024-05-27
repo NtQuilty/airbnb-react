@@ -1,29 +1,11 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MapIcon from '../../assets/mapIcon.svg?react';
 import { HotelCard } from './HotelCard';
 import { MAIN_CONTENT_DATA } from '../../config';
+import { useFavorites } from '../hooks/useFavorites';
 
 export const MainContent = () => {
-  const [likedAds, setLikedAds] = useState(() => {
-    const storedLikedAds = localStorage.getItem('LikedAds');
-    return storedLikedAds ? JSON.parse(storedLikedAds) : [];
-  });
-
-  const toggleFavorites = (hotelId: number) => {
-    setLikedAds((likedAds: number[]) => {
-      if (likedAds.includes(hotelId)) {
-        return likedAds.filter((id) => id !== hotelId);
-      } else {
-        return [...likedAds, hotelId];
-      }
-    });
-  };
-
-  useEffect(() => {
-    likedAds.sort((a: number, b: number) => a - b);
-    localStorage.setItem('LikedAds', JSON.stringify(likedAds));
-  }, [likedAds]);
+  const { likedAds, toggleFavorites } = useFavorites();
 
   return (
     <MainContentWrapper>

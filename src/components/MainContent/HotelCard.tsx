@@ -7,7 +7,6 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { usePrevNextButtons } from '../hooks/usePrevNextButtons';
 import { MainContentType } from '../../config';
 import { useDotButton } from '../hooks/useDotButton';
-import { useNavigate } from 'react-router-dom';
 
 interface HotelCardProps {
   hotel: MainContentType;
@@ -23,10 +22,9 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
 
   const { selectedIndex, scrollSnaps } = useDotButton(emblaApi);
 
-  const navigate = useNavigate();
-
-  const goToDetail: React.MouseEventHandler<HTMLAnchorElement> = () => {
-    navigate(`hotel/${hotel.id}`);
+  const openHotelDetail: React.MouseEventHandler<HTMLAnchorElement> = () => {
+    const url = `hotel/${hotel.id}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const handlePrevButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -40,7 +38,7 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
   };
 
   return (
-    <HotelCardWrapper onClick={goToDetail}>
+    <HotelCardWrapper onClick={openHotelDetail}>
       <HotelImageWrapper ref={emblaRef}>
         <HotelImageCarousel>
           {hotel.img.map((img, index) => {
@@ -83,13 +81,13 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
           <Distance> {hotel.distance}</Distance>
           <Date> {hotel.date}</Date>
           <Price>
-            <b>{hotel.price}</b> night
+            <b>{hotel.price.toLocaleString('en-US')}</b> night
           </Price>
         </HotelSummary>
-        <Raiting>
+        <Rating>
           <StarIcon />
           {hotel.rating.toFixed(2)}
-        </Raiting>
+        </Rating>
       </HotelInfo>
     </HotelCardWrapper>
   );
@@ -149,8 +147,8 @@ const HeartButton = styled.button<HeartButtonProps>`
   background: none;
   border: none;
   svg {
-    fill: ${(props) =>
-      props.likedAds.includes(props.hotelId) ? 'var(--pink)' : 'rgba(0, 0, 0, 0.5)'};
+    fill: ${({ likedAds, hotelId }) =>
+      likedAds.includes(hotelId) ? 'var(--pink)' : 'rgba(0, 0, 0, 0.5)'};
     fill-opacity: 1;
   }
   &:hover svg {
@@ -210,8 +208,8 @@ const DotButton = styled.button<{ isSelected: boolean }>`
   border-radius: 50%;
   border: none;
   background: #ffffff73;
-  transform: ${(props) => (props.isSelected ? `scale(1.1)` : undefined)};
-  background: ${(props) => (props.isSelected ? `var(--white)` : `#ffffff73`)};
+  transform: ${({ isSelected }) => (isSelected ? `scale(1.1)` : undefined)};
+  background: ${({ isSelected }) => (isSelected ? `var(--white)` : `#ffffff73`)};
 `;
 
 const HotelInfo = styled.div`
@@ -234,7 +232,7 @@ const HotelSummary = styled.div`
 const Location = styled.div`
   font-weight: 500;
 `;
-const Raiting = styled.div`
+const Rating = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
