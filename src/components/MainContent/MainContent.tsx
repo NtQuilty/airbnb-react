@@ -17,6 +17,7 @@ export const MainContent = () => {
               key={hotel.id}
               likedAds={likedAds}
               toggleFavorites={toggleFavorites}
+              isInteractive
             />
           );
         })}
