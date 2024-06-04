@@ -3,23 +3,28 @@ import styled from 'styled-components';
 
 interface ReviewsCountProps {
   reviews: number;
+  isInteractive: boolean;
 }
 
-export const ReviewsCount: React.FC<ReviewsCountProps> = ({ reviews }) => {
+export const ReviewsCount: React.FC<ReviewsCountProps> = ({ reviews, isInteractive = true }) => {
   return (
-    <ReviewsCountContainer>
-      <RatingValue>{reviews.toLocaleString('en-US')} reviews</RatingValue>
+    <ReviewsCountContainer isInteractive={isInteractive}>
+      <RatingValue isInteractive={isInteractive}>
+        {reviews.toLocaleString('en-US')} reviews
+      </RatingValue>
     </ReviewsCountContainer>
   );
 };
 
-const ReviewsCountContainer = styled.div`
+const ReviewsCountContainer = styled.div<{ isInteractive: boolean }>`
   display: flex;
   align-items: center;
-  cursor: pointer;
+  cursor: ${({ isInteractive }) => (isInteractive ? 'pointer' : 'default')};
 `;
 
-const RatingValue = styled.span`
+const RatingValue = styled.span<{ isInteractive: boolean }>`
   font-weight: 500;
-  text-decoration: underline;
+  text-decoration: ${({ isInteractive }) => (isInteractive ? 'underline' : 'none')};
+  line-height: ${({ isInteractive }) => (isInteractive ? '21px' : '42px')};
+  font-size: ${({ isInteractive }) => (isInteractive ? '14px' : '28px')};
 `;

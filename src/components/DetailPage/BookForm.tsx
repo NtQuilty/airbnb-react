@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { RatingValue } from '../RatingValue/RatingValue';
+import { RatingValue } from '../Rating/RatingValue';
 import { ReviewsCount } from '../ReviewsCount/ReviewsCount';
 
 interface BookFormProps {
-  rating: number;
   reviews: number;
   price: number;
+  ratings: { name: string; rating: number }[];
 }
 
-export const BookForm: React.FC<BookFormProps> = ({ rating, reviews, price }) => {
+export const BookForm: React.FC<BookFormProps> = ({ reviews, price, ratings }) => {
   const convertRupeesToDollars = Math.round(price / 14900.66225165563);
   const stayDuration = 4;
   const totalCost = convertRupeesToDollars * stayDuration;
@@ -21,8 +21,8 @@ export const BookForm: React.FC<BookFormProps> = ({ rating, reviews, price }) =>
           <b>${convertRupeesToDollars}</b> night
         </PricePerNight>
         <RatingSection>
-          <RatingValue rating={rating} />
-          <ReviewsCount reviews={reviews} />
+          <RatingValue ratings={ratings} isInteractive />
+          <ReviewsCount reviews={reviews} isInteractive />
         </RatingSection>
       </HeaderSection>
       <DetailsSection>
@@ -60,9 +60,12 @@ export const BookForm: React.FC<BookFormProps> = ({ rating, reviews, price }) =>
 };
 
 const BookFormWrapper = styled.div`
+  position: sticky;
+  top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: flex-start;
   padding: 30px 25px;
   border: 2px solid var(--border);
   border-radius: 15px;

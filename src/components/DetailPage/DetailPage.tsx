@@ -5,11 +5,12 @@ import { MainInfo } from './MainInfo';
 import { Gallery } from './Gallery';
 import { HotelInfo } from './HotelInfo';
 import { BookForm } from './BookForm';
+import { Rating } from '../Rating/Rating';
 
 export const DetailPage = () => {
   const { id } = useParams<{ id: string }>();
 
-  //сделать компонент с ошибкой
+  //Comment:сделать компонент с ошибкой
   if (!id) {
     return <div>id не найден</div>;
   }
@@ -25,21 +26,17 @@ export const DetailPage = () => {
       <MainInfo
         id={hotel.id}
         title={hotel.title}
-        rating={hotel.rating}
         reviews={hotel.reviews}
         location={hotel.location}
+        ratings={hotel.ratings}
+        isInteractive
       />
       <Gallery img={hotel.img} />
       <BookingSection>
-        <HotelInfo
-          owner={hotel.owner}
-          bed={hotel.bed}
-          bathroom={hotel.bathroom}
-          bedroom={hotel.bedroom}
-          guest={hotel.guest}
-        />
-        <BookForm rating={hotel.rating} reviews={hotel.reviews} price={hotel.price} />
+        <HotelInfo owner={hotel.owner} houseDetails={hotel.houseDetails} />
+        <BookForm reviews={hotel.reviews} price={hotel.price} ratings={hotel.ratings} />
       </BookingSection>
+      <Rating reviews={hotel.reviews} ratings={hotel.ratings} isInteractive={false} />
     </DetailPageWrapper>
   );
 };
@@ -52,6 +49,7 @@ const DetailPageWrapper = styled.div`
 `;
 
 const BookingSection = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin: 60px 0;

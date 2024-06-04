@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import StarIcon from '../../assets/secondPage/icon/starIcon.svg?react';
 import HeartIcon from '../../assets/heartIcon.svg?react';
 import PrevButtonIcon from '../../assets/carousel/prevButton.svg?react';
 import NextButtonIcon from '../../assets/carousel/nextButton.svg?react';
@@ -7,14 +6,23 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { usePrevNextButtons } from '../hooks/usePrevNextButtons';
 import { MainContentType } from '../../config';
 import { useDotButton } from '../hooks/useDotButton';
+import React from 'react';
+import { RatingValue } from '../Rating/RatingValue';
 
 interface HotelCardProps {
   hotel: MainContentType;
   likedAds: number[];
   toggleFavorites: (hotelId: number) => void;
+  isInteractive: boolean;
 }
 
-export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) => {
+export const HotelCard: React.FC<HotelCardProps> = ({
+  hotel,
+  likedAds,
+  toggleFavorites,
+  isInteractive,
+}) => {
+  const { img, id, location, distance, date, price, ratings } = hotel;
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
@@ -41,7 +49,7 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
     <HotelCardWrapper onClick={openHotelDetail}>
       <HotelImageWrapper ref={emblaRef}>
         <HotelImageCarousel>
-          {hotel.img.map((img, index) => {
+          {img.map((img, index) => {
             return (
               <HotelImageSlide key={index}>
                 <HotelImage src={img} />
@@ -55,7 +63,7 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
             toggleFavorites(hotel.id);
           }}
           likedAds={likedAds}
-          hotelId={hotel.id}
+          hotelId={id}
         >
           <HeartIcon />
         </HeartButton>
@@ -77,17 +85,14 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
       </HotelImageWrapper>
       <HotelInfo>
         <HotelSummary>
-          <Location>{hotel.location}</Location>
-          <Distance> {hotel.distance}</Distance>
-          <Date> {hotel.date}</Date>
+          <Location>{location}</Location>
+          <Distance> {distance}</Distance>
+          <Date> {date}</Date>
           <Price>
-            <b>{hotel.price.toLocaleString('en-US')}</b> night
+            <b>{price.toLocaleString('en-US')}</b> night
           </Price>
         </HotelSummary>
-        <Rating>
-          <StarIcon />
-          {hotel.rating.toFixed(2)}
-        </Rating>
+        <RatingValue isInteractive={isInteractive} ratings={ratings} />
       </HotelInfo>
     </HotelCardWrapper>
   );
@@ -232,11 +237,7 @@ const HotelSummary = styled.div`
 const Location = styled.div`
   font-weight: 500;
 `;
-const Rating = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-`;
+
 const Price = styled.div`
   font-weight: 300;
   & b {

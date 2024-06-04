@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import PresentationIcon from '../../assets/secondPage/icon/presentationIcon.svg?react';
+import React from 'react';
 
 interface GalleryProps {
   img: string[];
 }
 
-export const Gallery = ({ img }: GalleryProps) => {
+export const Gallery: React.FC<GalleryProps> = ({ img }) => {
   return (
     <GalleryWrapper>
       <GalleryGrid>

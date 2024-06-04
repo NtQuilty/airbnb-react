@@ -3,23 +3,26 @@ import MedalIcon from '../../assets/secondPage/icon/medalIcon.svg?react';
 import KeyIcon from '../../assets/secondPage/icon/keyIcon.svg?react';
 import NaviIcon from '../../assets/secondPage/icon/naviIcon.svg?react';
 import TimerIcon from '../../assets/secondPage/icon/timerIcon.svg?react';
+import React from 'react';
+import { AmenitiesList } from './AmenitiesList';
 
 interface HotelInfoProps {
-  owner: string;
-  guest: number;
-  bedroom: number;
-  bed: number;
-  bathroom: number;
+  owner: {
+    name: string;
+    avatarSrc: string;
+  };
+  houseDetails: { guest: number; bedroom: number; bed: number; bathroom: number };
 }
 
-export const HotelInfo = ({ owner, guest, bedroom, bed, bathroom }: HotelInfoProps) => {
-  const normalizedOwner = owner.replace(/\s+/g, '');
+export const HotelInfo: React.FC<HotelInfoProps> = ({ owner, houseDetails }) => {
+  const { name, avatarSrc } = owner;
+  const { bed, bathroom, bedroom, guest } = houseDetails;
 
   return (
     <HotelInfoWrapper>
       <TopSection>
         <TopSectionInfo>
-          <HostTitle>Entire villa hosted by {owner}</HostTitle>
+          <HostTitle>Entire villa hosted by {name}</HostTitle>
           <DetailsList>
             <DetailItem>{guest} guests</DetailItem>
             <DetailItem>{bedroom} bedroom</DetailItem>
@@ -27,13 +30,13 @@ export const HotelInfo = ({ owner, guest, bedroom, bed, bathroom }: HotelInfoPro
             <DetailItem>{bathroom} bath</DetailItem>
           </DetailsList>
         </TopSectionInfo>
-        <Avatars src={`../public/images/userAvatars/${normalizedOwner}.png`} alt={owner} />
+        <Avatars src={avatarSrc} alt={name} />
       </TopSection>
       <FeaturesSection>
         <Feature>
           <MedalIcon />
           <FeatureText>
-            <FeatureTitle>{owner} is a Superhost</FeatureTitle>
+            <FeatureTitle>{name} is a Superhost</FeatureTitle>
             <FeatureDescription>
               Superhosts are experienced, highly rated hosts who are committed to providing great
               stays for guests.
@@ -66,6 +69,7 @@ export const HotelInfo = ({ owner, guest, bedroom, bed, bathroom }: HotelInfoPro
         </BookingMessage>
         <TimerIcon />
       </BookingSection>
+      <AmenitiesList />
     </HotelInfoWrapper>
   );
 };
@@ -155,7 +159,7 @@ const BookingSection = styled.section`
   justify-content: center;
   align-items: center;
   gap: 45px;
-  margin-top: 35px;
+  margin: 35px 0;
   padding: 20px 30px;
   box-shadow: 0px 0px 2px 0px #2b2b2b59;
   border-radius: 10px;

@@ -5,8 +5,10 @@ import { SocialLinks } from '../SocialLinks/SocialLinks';
 export const Footer = () => {
   const location = useLocation();
 
+  const isHomePage = location.pathname === '/';
+
   return (
-    <FooterWrapper>
+    <FooterWrapper isHomePage={isHomePage}>
       <FooterContainer>
         <LegalSection>
           <CopyrightText>© 2023 nginep, Inc.</CopyrightText>
@@ -31,19 +33,15 @@ export const Footer = () => {
         <InfoSection>
           <FooterButton>English (US)</FooterButton>
           <FooterButton>Rp IDR</FooterButton>
-          {location.pathname === '/' ? (
-            <FooterButton>Support & resources</FooterButton>
-          ) : (
-            <SocialLinks />
-          )}
+          {isHomePage ? <FooterButton>Support & resources</FooterButton> : <SocialLinks />}
         </InfoSection>
       </FooterContainer>
     </FooterWrapper>
   );
 };
 
-const FooterWrapper = styled.div`
-  position: fixed;
+const FooterWrapper = styled.div<{ isHomePage: boolean }>`
+  position: ${({ isHomePage }) => (isHomePage ? 'fixed' : 'static')};
   bottom: 0;
   width: 100%;
   background-color: var(--white);
