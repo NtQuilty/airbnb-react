@@ -1,41 +1,47 @@
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { SocialLinks } from '../SocialLinks/SocialLinks';
 
 export const Footer = () => {
+  const location = useLocation();
+
+  const isHomePage = location.pathname === '/';
+
   return (
-    <FooterWrapper>
+    <FooterWrapper isHomePage={isHomePage}>
       <FooterContainer>
         <LegalSection>
           <CopyrightText>© 2023 nginep, Inc.</CopyrightText>
           <FooterList>
             <ListItem>
-              <FooterLink href="#">Terms</FooterLink>
+              <FooterLink to="/terms">Terms</FooterLink>
             </ListItem>
             <ListItem>
-              <FooterLink href="#">Sitemap</FooterLink>
+              <FooterLink to="/sitemap">Sitemap</FooterLink>
             </ListItem>
             <ListItem>
-              <FooterLink href="#">Privacy</FooterLink>
+              <FooterLink to="/privacy">Privacy</FooterLink>
             </ListItem>
             <ListItem>
-              <FooterLink href="#">Your Privacy Choices</FooterLink>
+              <FooterLink to="/your-privacy-choices">Your Privacy Choices</FooterLink>
             </ListItem>
             <ListItem>
-              <FooterLink href="#">Destinations</FooterLink>
+              <FooterLink to="/destinations">Destinations</FooterLink>
             </ListItem>
           </FooterList>
         </LegalSection>
         <InfoSection>
           <FooterButton>English (US)</FooterButton>
           <FooterButton>Rp IDR</FooterButton>
-          <FooterButton>Support & resources</FooterButton>
+          {isHomePage ? <FooterButton>Support & resources</FooterButton> : <SocialLinks />}
         </InfoSection>
       </FooterContainer>
     </FooterWrapper>
   );
 };
 
-const FooterWrapper = styled.div`
-  position: fixed;
+const FooterWrapper = styled.div<{ isHomePage: boolean }>`
+  position: ${({ isHomePage }) => (isHomePage ? 'fixed' : 'static')};
   bottom: 0;
   width: 100%;
   background-color: var(--white);
@@ -74,7 +80,7 @@ const ListItem = styled.li`
   }
 `;
 
-const FooterLink = styled.a`
+const FooterLink = styled(Link)`
   color: var(--dark-gray);
   text-decoration: none;
   &:hover {
@@ -84,15 +90,15 @@ const FooterLink = styled.a`
 const InfoSection = styled.section`
   display: flex;
   gap: 32px;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 21px;
 `;
 
 const FooterButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+  font-family: var(--font);
+  font-weight: 500;
+  line-height: 21px;
   &:hover {
     text-decoration: underline;
   }

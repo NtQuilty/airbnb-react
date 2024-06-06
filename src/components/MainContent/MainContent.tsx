@@ -1,29 +1,11 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MapIcon from '../../assets/mapIcon.svg?react';
 import { HotelCard } from './HotelCard';
 import { MAIN_CONTENT_DATA } from '../../config';
+import { useFavorites } from '../hooks/useFavorites';
 
 export const MainContent = () => {
-  const [likedAds, setLikedAds] = useState(() => {
-    const storedLikedAds = localStorage.getItem('LikedAds');
-    return storedLikedAds ? JSON.parse(storedLikedAds) : [];
-  });
-
-  const toggleFavorites = (hotelId: number) => {
-    setLikedAds((likedAds: number[]) => {
-      if (likedAds.includes(hotelId)) {
-        return likedAds.filter((id) => id !== hotelId);
-      } else {
-        return [...likedAds, hotelId];
-      }
-    });
-  };
-
-  useEffect(() => {
-    likedAds.sort((a: number, b: number) => a - b);
-    localStorage.setItem('LikedAds', JSON.stringify(likedAds));
-  }, [likedAds]);
+  const { likedAds, toggleFavorites } = useFavorites();
 
   return (
     <MainContentWrapper>
@@ -35,6 +17,7 @@ export const MainContent = () => {
               key={hotel.id}
               likedAds={likedAds}
               toggleFavorites={toggleFavorites}
+              isInteractive
             />
           );
         })}
@@ -48,6 +31,7 @@ export const MainContent = () => {
 };
 
 const MainContentWrapper = styled.div`
+  position: relative;
   max-width: 1350px;
   margin: 0 auto;
   padding: 20px 45px;
@@ -65,6 +49,8 @@ const HotelsContainer = styled.div`
 `;
 
 const ShowMapButton = styled.button`
+  position: fixed;
+  bottom: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +63,6 @@ const ShowMapButton = styled.button`
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
-    transition: transform 0.5s ease;
   }
 `;
 

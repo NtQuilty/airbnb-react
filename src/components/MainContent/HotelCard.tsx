@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import StarIcon from '../../assets/secondPage/icon/starIcon.svg?react';
 import HeartIcon from '../../assets/heartIcon.svg?react';
 import PrevButtonIcon from '../../assets/carousel/prevButton.svg?react';
 import NextButtonIcon from '../../assets/carousel/nextButton.svg?react';
@@ -7,14 +6,23 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { usePrevNextButtons } from '../hooks/usePrevNextButtons';
 import { MainContentType } from '../../config';
 import { useDotButton } from '../hooks/useDotButton';
+import React from 'react';
+import { RatingValue } from '../Rating/RatingValue';
 
 interface HotelCardProps {
   hotel: MainContentType;
   likedAds: number[];
   toggleFavorites: (hotelId: number) => void;
+  isInteractive: boolean;
 }
 
-export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) => {
+export const HotelCard: React.FC<HotelCardProps> = ({
+  hotel,
+  likedAds,
+  toggleFavorites,
+  isInteractive,
+}) => {
+  const { img, id, location, distance, date, price, ratings } = hotel;
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
@@ -22,11 +30,26 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
 
   const { selectedIndex, scrollSnaps } = useDotButton(emblaApi);
 
+  const openHotelDetail: React.MouseEventHandler<HTMLAnchorElement> = () => {
+    const url = `hotel/${hotel.id}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handlePrevButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    onPrevButtonClick();
+  };
+
+  const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    onNextButtonClick();
+  };
+
   return (
-    <HotelCardWrapper>
+    <HotelCardWrapper onClick={openHotelDetail}>
       <HotelImageWrapper ref={emblaRef}>
         <HotelImageCarousel>
-          {hotel.img.map((img, index) => {
+          {img.map((img, index) => {
             return (
               <HotelImageSlide key={index}>
                 <HotelImage src={img} />
@@ -35,19 +58,22 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
           })}
         </HotelImageCarousel>
         <HeartButton
-          onClick={() => toggleFavorites(hotel.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleFavorites(hotel.id);
+          }}
           likedAds={likedAds}
-          hotelId={hotel.id}
+          hotelId={id}
         >
           <HeartIcon />
         </HeartButton>
         {!prevBtnDisabled && (
-          <PrevButton onClick={onPrevButtonClick}>
+          <PrevButton onClick={handlePrevButtonClick}>
             <PrevButtonIcon />
           </PrevButton>
         )}
         {!nextBtnDisabled && (
-          <NextButton onClick={onNextButtonClick}>
+          <NextButton onClick={handleNextButtonClick}>
             <NextButtonIcon />
           </NextButton>
         )}
@@ -59,17 +85,14 @@ export const HotelCard = ({ hotel, likedAds, toggleFavorites }: HotelCardProps) 
       </HotelImageWrapper>
       <HotelInfo>
         <HotelSummary>
-          <Title>{hotel.title}</Title>
-          <Distance> {hotel.distance}</Distance>
-          <Date> {hotel.date}</Date>
+          <Location>{location}</Location>
+          <Distance> {distance}</Distance>
+          <Date> {date}</Date>
           <Price>
-            <b>{hotel.price}</b> night
+            <b>{price.toLocaleString('en-US')}</b> night
           </Price>
         </HotelSummary>
-        <Raiting>
-          <StarIcon />
-          {hotel.rating.toFixed(2)}
-        </Raiting>
+        <RatingValue isInteractive={isInteractive} ratings={ratings} />
       </HotelInfo>
     </HotelCardWrapper>
   );
@@ -116,7 +139,7 @@ const HotelImage = styled.img`
 `;
 
 interface HeartButtonProps {
-  onClick: () => void;
+  onClick: React.MouseEventHandler<HTMLAnchorElement>;
   likedAds: number[];
   hotelId: number;
 }
@@ -129,8 +152,8 @@ const HeartButton = styled.button<HeartButtonProps>`
   background: none;
   border: none;
   svg {
-    fill: ${(props) =>
-      props.likedAds.includes(props.hotelId) ? 'var(--pink)' : 'rgba(0, 0, 0, 0.5)'};
+    fill: ${({ likedAds, hotelId }) =>
+      likedAds.includes(hotelId) ? 'var(--pink)' : 'rgba(0, 0, 0, 0.5)'};
     fill-opacity: 1;
   }
   &:hover svg {
@@ -161,12 +184,17 @@ const Button = styled.button`
     opacity: 1 !important;
   }
 `;
-const PrevButton = styled(Button)`
+
+interface ButtonProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const PrevButton = styled(Button)<ButtonProps>`
   left: 10px;
   padding: 9px;
 `;
 
-const NextButton = styled(Button)`
+const NextButton = styled(Button)<ButtonProps>`
   right: 15px;
   padding: 9px;
 `;
@@ -185,8 +213,8 @@ const DotButton = styled.button<{ isSelected: boolean }>`
   border-radius: 50%;
   border: none;
   background: #ffffff73;
-  transform: ${(props) => (props.isSelected ? `scale(1.1)` : undefined)};
-  background: ${(props) => (props.isSelected ? `var(--white)` : `#ffffff73`)};
+  transform: ${({ isSelected }) => (isSelected ? `scale(1.1)` : undefined)};
+  background: ${({ isSelected }) => (isSelected ? `var(--white)` : `#ffffff73`)};
 `;
 
 const HotelInfo = styled.div`
@@ -206,14 +234,10 @@ const HotelSummary = styled.div`
   gap: 10px;
 `;
 
-const Title = styled.div`
+const Location = styled.div`
   font-weight: 500;
 `;
-const Raiting = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-`;
+
 const Price = styled.div`
   font-weight: 300;
   & b {

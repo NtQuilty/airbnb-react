@@ -11,9 +11,23 @@ export const GlobalStyle = createGlobalStyle`
     --pink: #FF385C;
     --dark-pink: #d22b49;
     --button-hover-fill: #717171;
-    --box-shadow: #22222240
+    --box-shadow: #22222240;
+    --border: #e6e6e6;
   }
   body {
     font-family: var(--font);
-  };
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .ymaps-2-1-79-map-copyrights-promo {
+    display: none
+  }
+
+  .ymaps-2-1-79-copyright__content-cell {
+    opacity: 0;
+  }
 `;

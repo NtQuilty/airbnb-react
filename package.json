@@ -12,13 +12,19 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.19",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@pbe/react-yandex-maps": "^1.2.5",
     "embla-carousel-react": "^8.0.2",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-multi-carousel": "^2.8.5",
+    "react-router-dom": "^6.23.1",
     "reset-css": "^5.0.2",
-    "styled-components": "^6.1.8",
+    "styled-components": "^6.1.11",
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {

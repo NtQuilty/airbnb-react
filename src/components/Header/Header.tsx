@@ -4,41 +4,40 @@ import SearchIcon from '../../assets/headerIcon/searchIcon.svg?react';
 import GlobeIcon from '../../assets/headerIcon/globeIcon.svg?react';
 import EllipsisIcon from '../../assets/headerIcon/ellipsisIcon.svg?react';
 import UserIcon from '../../assets/headerIcon/userIcon.svg?react';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
     <HeaderWrapper>
-      <ShadowBox>
-        <HeaderContainer>
-          <CompanyName>Nginep</CompanyName>
-          <SearchContainer>
-            <FilterButton>
-              <FilterIcon />
-            </FilterButton>
-            <SearchInput placeholder="Staycation to Bali" />
-            <SearchButton>
-              <SearchIcon />
-            </SearchButton>
-          </SearchContainer>
-          <InfromationContainer>
-            <SiteName>nginep site</SiteName>
-            <LanguageButton>
-              <GlobeIcon />
-            </LanguageButton>
-            <LoginButton>
-              <EllipsisIcon />
-              <UserIcon />
-            </LoginButton>
-          </InfromationContainer>
-        </HeaderContainer>
-      </ShadowBox>
+      <HeaderContainer>
+        <CompanyLink to={'/'}>
+          <CompanyName>аирбнб</CompanyName>
+        </CompanyLink>
+        <SearchContainer>
+          <FilterButton>
+            <FilterIcon />
+          </FilterButton>
+          <SearchInput placeholder="Staycation to Bali" />
+          <SearchButton>
+            <SearchIcon />
+          </SearchButton>
+        </SearchContainer>
+        <InfromationContainer>
+          <SiteName>donef site</SiteName>
+          <LanguageButton>
+            <GlobeIcon />
+          </LanguageButton>
+          <LoginButton>
+            <EllipsisIcon />
+            <UserIcon />
+          </LoginButton>
+        </InfromationContainer>
+      </HeaderContainer>
     </HeaderWrapper>
   );
 };
 
-const HeaderWrapper = styled.div``;
-
-const ShadowBox = styled.div`
+const HeaderWrapper = styled.div`
   box-shadow: 0px 0px 2px 0px var(--box-shadow);
 `;
 
@@ -50,6 +49,8 @@ const HeaderContainer = styled.header`
   padding: 19px 45px;
   margin: 0 auto;
 `;
+
+const CompanyLink = styled(Link)``;
 
 const CompanyName = styled.div`
   color: var(--pink);
