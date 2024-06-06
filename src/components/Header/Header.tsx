@@ -11,7 +11,7 @@ export const Header = () => {
     <HeaderWrapper>
       <HeaderContainer>
         <CompanyLink to={'/'}>
-          <CompanyName>Nginep</CompanyName>
+          <CompanyName>аирбнб</CompanyName>
         </CompanyLink>
         <SearchContainer>
           <FilterButton>
@@ -23,7 +23,7 @@ export const Header = () => {
           </SearchButton>
         </SearchContainer>
         <InfromationContainer>
-          <SiteName>nginep site</SiteName>
+          <SiteName>donef site</SiteName>
           <LanguageButton>
             <GlobeIcon />
           </LanguageButton>

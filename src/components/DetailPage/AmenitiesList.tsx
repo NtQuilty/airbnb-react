@@ -46,7 +46,8 @@ export const AmenitiesList = () => {
 };
 
 const AmenitiesSection = styled.section`
-  padding-bottom: 40px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 `;
 

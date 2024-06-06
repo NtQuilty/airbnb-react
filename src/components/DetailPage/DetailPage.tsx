@@ -6,6 +6,7 @@ import { Gallery } from './Gallery';
 import { HotelInfo } from './HotelInfo';
 import { BookForm } from './BookForm';
 import { Rating } from '../Rating/Rating';
+import { YandexMap } from '../YandexMap/YandexMap';
 
 export const DetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,22 +22,36 @@ export const DetailPage = () => {
     return <div>hotel не найден</div>;
   }
 
+  const {
+    id: hotelId,
+    title,
+    reviews,
+    location,
+    ratings,
+    img,
+    owner,
+    houseDetails,
+    price,
+    coordinates,
+  } = hotel;
+
   return (
     <DetailPageWrapper>
       <MainInfo
-        id={hotel.id}
-        title={hotel.title}
-        reviews={hotel.reviews}
-        location={hotel.location}
-        ratings={hotel.ratings}
+        id={hotelId}
+        title={title}
+        reviews={reviews}
+        location={location}
+        ratings={ratings}
         isInteractive
       />
-      <Gallery img={hotel.img} />
+      <Gallery img={img} />
       <BookingSection>
-        <HotelInfo owner={hotel.owner} houseDetails={hotel.houseDetails} />
-        <BookForm reviews={hotel.reviews} price={hotel.price} ratings={hotel.ratings} />
+        <HotelInfo owner={owner} houseDetails={houseDetails} />
+        <BookForm reviews={reviews} price={price} ratings={ratings} />
       </BookingSection>
-      <Rating reviews={hotel.reviews} ratings={hotel.ratings} isInteractive={false} />
+      <Rating reviews={reviews} ratings={ratings} isInteractive={false} />
+      <YandexMap location={location} title={title} coordinates={coordinates} />
     </DetailPageWrapper>
   );
 };
@@ -52,6 +67,6 @@ const BookingSection = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin: 60px 0;
+  margin: 60px 0 45px;
   gap: 50px;
 `;

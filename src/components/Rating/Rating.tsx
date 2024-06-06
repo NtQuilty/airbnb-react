@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { RatingValue } from './RatingValue';
 import { ReviewsCount } from '../ReviewsCount/ReviewsCount';
-import { LinearWithValueLabel } from '../LinearWithValueLabel/LinearWithValueLabel';
-import React from 'react';
+import { ProgressBarWithLabel } from '../ProgressBarWithLabel/ProgressBarWithLabel';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface RatingProps {
   reviews: number;
@@ -11,8 +11,32 @@ interface RatingProps {
 }
 
 export const Rating: React.FC<RatingProps> = ({ reviews, isInteractive, ratings }) => {
+  const [visibility, setVisibility] = useState(false);
+  const ratingRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entries]) => {
+        if (entries.isIntersecting) {
+          setVisibility(true);
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    if (ratingRef.current) {
+      observer.observe(ratingRef.current);
+    }
+
+    return () => {
+      if (ratingRef.current) {
+        observer.unobserve(ratingRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <RatingContainer>
+    <RatingContainer ref={ratingRef}>
       <RatingList>
         <RatingItem>
           <RatingValue ratings={ratings} isInteractive={isInteractive} />
@@ -23,14 +47,17 @@ export const Rating: React.FC<RatingProps> = ({ reviews, isInteractive, ratings 
       </RatingList>
       <ProgressContainer>
         {ratings.map(({ name, rating }, index) => (
-          <LinearWithValueLabel key={index} name={name} value={rating} />
+          <ProgressBarWithLabel key={index} name={name} rating={rating} visibility={visibility} />
         ))}
       </ProgressContainer>
     </RatingContainer>
   );
 };
 
-const RatingContainer = styled.div``;
+const RatingContainer = styled.div`
+  padding-bottom: 45px;
+  border-bottom: 1px solid var(--border);
+`;
 
 const RatingList = styled.ol`
   display: flex;

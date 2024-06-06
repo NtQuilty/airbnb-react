@@ -16,9 +16,18 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: var(--font);
-  };
+  }
+
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  .ymaps-2-1-79-map-copyrights-promo {
+    display: none
+  }
+
+  .ymaps-2-1-79-copyright__content-cell {
+    opacity: 0;
   }
 `;

@@ -54,6 +54,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 4.9 },
       { name: 'Value', rating: 4.7 },
     ],
+    coordinates: [55.6333, 51.8167],
   },
   {
     id: 1,
@@ -80,6 +81,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 4.3 },
       { name: 'Value', rating: 4.2 },
     ],
+    coordinates: [55.741272, 52.403662],
   },
   {
     id: 2,
@@ -106,6 +108,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 4.8 },
       { name: 'Value', rating: 4.6 },
     ],
+    coordinates: [55.7887, 49.1221],
   },
   {
     id: 3,
@@ -132,6 +135,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 4.1 },
       { name: 'Value', rating: 3.9 },
     ],
+    coordinates: [55.6403, 50.0568],
   },
   {
     id: 4,
@@ -158,6 +162,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 2.2 },
       { name: 'Value', rating: 2.0 },
     ],
+    coordinates: [55.3075, 49.6283],
   },
   {
     id: 5,
@@ -184,6 +189,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 3.3 },
       { name: 'Value', rating: 3.2 },
     ],
+    coordinates: [55.3353, 50.6439],
   },
   {
     id: 6,
@@ -210,6 +216,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 2.7 },
       { name: 'Value', rating: 2.6 },
     ],
+    coordinates: [55.3967, 49.55],
   },
   {
     id: 7,
@@ -236,6 +243,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 3.1 },
       { name: 'Value', rating: 3.0 },
     ],
+    coordinates: [55.7522, 49.2211],
   },
   {
     id: 8,
@@ -262,6 +270,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 3.9 },
       { name: 'Value', rating: 3.8 },
     ],
+    coordinates: [55.7272, 52.4112],
   },
   {
     id: 9,
@@ -288,6 +297,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 3.5 },
       { name: 'Value', rating: 3.4 },
     ],
+    coordinates: [55.7645, 52.4312],
   },
   {
     id: 10,
@@ -314,6 +324,7 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 4.2 },
       { name: 'Value', rating: 4.1 },
     ],
+    coordinates: [55.3075, 49.6283],
   },
   {
     id: 11,
@@ -340,5 +351,6 @@ export const MAIN_CONTENT_DATA = [
       { name: 'Location', rating: 1.6 },
       { name: 'Value', rating: 1.5 },
     ],
+    coordinates: [55.7522, 49.2211],
   },
 ];

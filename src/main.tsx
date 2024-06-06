@@ -6,6 +6,7 @@ import { MainPage } from './components/MainPage/MainPage.tsx';
 import { DetailPage } from './components/DetailPage/DetailPage.tsx';
 import { GlobalStyle } from './GlobalStyle.tsx';
 import { Layout } from './components/Layout/Layout.tsx';
+import { YMaps } from '@pbe/react-yandex-maps';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <GlobalStyle />
-    <RouterProvider router={router} />
+    <YMaps
+      query={{
+        lang: 'en_US',
+        ns: 'use-load-option',
+        load: 'Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon',
+      }}
+    >
+      <RouterProvider router={router} />
+    </YMaps>
   </React.StrictMode>,
 );

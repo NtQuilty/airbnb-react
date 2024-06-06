@@ -31,6 +31,7 @@ export const MainContent = () => {
 };
 
 const MainContentWrapper = styled.div`
+  position: relative;
   max-width: 1350px;
   margin: 0 auto;
   padding: 20px 45px;
@@ -48,6 +49,8 @@ const HotelsContainer = styled.div`
 `;
 
 const ShowMapButton = styled.button`
+  position: fixed;
+  bottom: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,7 +63,6 @@ const ShowMapButton = styled.button`
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
-    transition: transform 0.5s ease;
   }
 `;
 
